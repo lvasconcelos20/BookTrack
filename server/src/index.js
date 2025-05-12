@@ -1,11 +1,13 @@
 const express = require("express")
 const userRouter = require("./routes/user")
+const bookRouter = require("./routes/book")
 
 const app = express()
 
 
 app.use([
-    userRouter
+    userRouter,
+    bookRouter
 ])
 
 app.listen(8080, () => {
