@@ -9,6 +9,7 @@
   "description": "BookTrack",
   "main": "index.js",
   "dependencies": {
+    "@prisma/client": "^6.7.0",
     "debug": "^4.4.0",
     "esbuild": "^0.25.4",
     "esbuild-register": "^3.6.0",
