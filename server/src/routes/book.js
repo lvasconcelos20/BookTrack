@@ -1,23 +1,22 @@
-const express = require("express")
+const express = require("express");
 
-const router = express.Router()
+const router = express.Router();
 
 
 router.get("/book", (req, res) => {
-    return res.send("[GET] Livros")
-})
-
+  return res.send("[GET] Livros");
+});
 
 router.post("/book", (req, res) => {
-    return res.send("[POST] Livros")
-})
+  return res.send("[POST] Livros");
+});
 
 router.patch("/book", (req, res) => {
-    return res.send("[PATCH] Livros")
-} )
+  return res.send("[PATCH] Livros");
+});
 
 router.delete("/book", (req, res) => {
-    return res.send("[DELETE] Livros")
-})
+  return res.send("[DELETE] Livros");
+});
 
 module.exports = router;

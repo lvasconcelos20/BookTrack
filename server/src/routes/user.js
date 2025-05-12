@@ -1,19 +1,12 @@
-const express = require("express")
+const express = require("express");
+const ControllerUser = require("../controllers/UserControllers")
 
-const router = express.Router()
+const router = express.Router();
 
+router.get("/user", ControllerUser.get);
 
-router.get("/user", (req, res) => {
-    return res.send("[GET] Usuários")
-})
+router.post("/user", ControllerUser.create);
 
-
-router.post("/user", (req, res) => {
-    return res.send("[POST] Usuários")
-})
-
-router.delete("/user", (req, res) => {
-    return res.send("[DELETE] Usuários")
-})
+router.delete("/user", ControllerUser.delete);
 
 module.exports = router;
