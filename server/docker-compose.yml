@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  booktrack-database:
+    container_name: booktrack-database
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=senha
+      - MYSQL_DATABASE=booktrack-database
+    ports:
+      - '3307:3306'
+    networks:
+      - backend
+    volumes:
+      - mysql-booktrack-database:/var/libs/mysql
+
+
+volumes:
+  mysql-booktrack-database: 
+networks:
+  backend:
