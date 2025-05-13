@@ -126,6 +126,16 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email'
 };
 
+exports.Prisma.BookScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  author: 'author',
+  status: 'status',
+  userId: 'userId',
+  evaluation: 'evaluation',
+  date_conclusion: 'date_conclusion'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -136,9 +146,24 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   email: 'email'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.BookOrderByRelevanceFieldEnum = {
+  title: 'title',
+  author: 'author'
+};
+exports.Status = exports.$Enums.Status = {
+  LIDO: 'LIDO',
+  LENDO: 'LENDO',
+  QUERO_LER: 'QUERO_LER'
+};
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Book: 'Book'
 };
 
 /**

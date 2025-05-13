@@ -5,11 +5,11 @@ const prismaClient = new prisma.PrismaClient();
 
 module.exports = {
   getAll: async () => {
-    return await prismaClient.user.findMany();
+    return await prismaClient.user.findMany({include: { books: true}});
   },
 
   getById: async (id) => {
-    return await prismaClient.user.findUnique({ where: { id } });
+    return await prismaClient.user.findUnique({ where: { id }, include: {books: true}});
   },
 
   getByEmail: async (email) => {
