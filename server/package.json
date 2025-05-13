@@ -10,6 +10,7 @@
   "main": "index.js",
   "dependencies": {
     "@prisma/client": "^6.7.0",
+    "bcryptjs": "^3.0.2",
     "debug": "^4.4.0",
     "esbuild": "^0.25.4",
     "esbuild-register": "^3.6.0",
