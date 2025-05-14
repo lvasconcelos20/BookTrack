@@ -3,10 +3,11 @@ const prisma = require("../generated/prisma/client");
 const prismaClient = new prisma.PrismaClient();
 
 module.exports = {
-  getAll: async (userId) => {
+  getAll: async () => {
     return await prismaClient.book.findMany({
-      where: { userId },
-      orderBy: { date_conclusion: "desc" },
+     include: {
+        user: true
+     }
     });
   },
 
@@ -28,10 +29,27 @@ module.exports = {
       data: updatedData,
     });
   },
+  
+   getById: async(id) => {
+    
+    try {
+        const book = await prismaClient.book.findUnique({
+            where: { id },
+            include: {
+                user: true
+            }
+        })
+        return book
+    } catch (error) {
+        throw new Error('Erro ao buscar o livro')
+    }
+  },
 
-  delete: async (id) => {
+  deleteBook: async (id) => {
     return await prismaClient.book.delete({
       where: { id },
     });
   },
+
+ 
 };

@@ -2,6 +2,7 @@ const UserService = require("../services/UserService");
 const UserValidation = require("../DTOs/User");
 
 module.exports = {
+
   getAll: async (req, res) => {
     try {
       const users = await UserService.getAll();
@@ -68,4 +69,6 @@ module.exports = {
         .json({ message: "Erro ao deletar usuário", error: error.message });
     }
   },
+
+ 
 };
