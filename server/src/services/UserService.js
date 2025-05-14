@@ -16,6 +16,15 @@ module.exports = {
     return await prismaClient.user.findUnique({ where: { email } });
   },
 
+   findByEmail: async (email) => {
+    try {
+      const user = await prismaClient.user.findUnique({ where: { email } });
+      return user;
+    } catch (err) {
+      throw new Error("Erro ao buscar usuário por email");
+    }
+  },
+
   create: async (userData) => {
     return await prismaClient.user.create({
       data: {

@@ -1,22 +1,22 @@
-
 const jwt = require("jsonwebtoken");
 
-const authenticate = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1]; 
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1]; 
 
   if (!token) {
-    return res.status(401).json({ message: "Token de autenticação não encontrado" });
+    return res.status(401).json({ message: "Token não fornecido" });
   }
 
+  try {
+    const secret = process.env.JWT_SECRET;
+    const decoded = jwt.verify(token, secret);
 
-  jwt.verify(token, "seu-segredo", (err, decoded) => {
-    if (err) {
-      return res.status(401).json({ message: "Token inválido" });
-    }
-    req.user = decoded;
+    req.user = { id: decoded.id };
     next();
-  });
+  } catch (error) {
+    return res.status(403).json({ message: "Token inválido ou expirado" });
+  }
 };
 
-module.exports = authenticate;
-
+module.exports = authenticateToken;
