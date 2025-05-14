@@ -36,15 +36,15 @@ npm install
   
 4.
 
-Instale a extensão Docker no VS Code (se ainda não tiver).
-
-Certifique-se de ter o Docker Desktop rodando.
-
-Clique com o botão direito no arquivo docker-compose.yml na raiz do projeto.
-
-Selecione “Compose Up”.
-
-A API será iniciada e estará disponível.
+  Instale a extensão Docker no VS Code (se ainda não tiver).
+  
+  Certifique-se de ter o Docker Desktop rodando.
+  
+  Clique com o botão direito no arquivo docker-compose.yml na raiz do projeto.
+  
+  Selecione “Compose Up”.
+  
+  A API será iniciada e estará disponível.
 
 5. Execute as migrations do Prisma:
 
