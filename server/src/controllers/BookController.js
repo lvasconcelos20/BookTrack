@@ -1,17 +1,16 @@
 const BookService = require("../services/BookService");
-const BookValidation = require("../DTOs/Book");
+const { BookValidation, UpdateBook } = require("../DTOs/Book");
 
 module.exports = {
   create: async (req, res) => {
     try {
-      const parsedBook = BookValidation.Book.parse(req.body);
+      const parsedBook = BookValidation.parse(req.body);
 
       if (parsedBook.status !== "LIDO" && parsedBook.evaluation !== undefined) {
         return res.status(400).json({
           message: "Avaliação só pode ser registrada se o status for 'LIDO'",
         });
       }
-      console.log("BookService:", BookService);
 
       const createdBook = await BookService.create(parsedBook);
       return res.status(201).json({
@@ -48,18 +47,13 @@ module.exports = {
           .json({ message: "Livros com status 'LIDO' não podem ser editados" });
       }
 
-      const parsedBook = BookValidation.Book.partial().parse(req.body);
+      const parsed = UpdateBook.safeParse(req.body);
 
-      if (
-        parsedBook.evaluation !== undefined &&
-        (parsedBook.status ?? existingBook.status) !== "LIDO"
-      ) {
-        return res.status(400).json({
-          message: "Avaliação só pode ser registrada se o status for 'LIDO'",
-        });
+      if (!parsed.success) {
+        return res.status(400).json({ errors: parsed.error.format() });
       }
 
-      const updatedBook = await BookService.update(id, parsedBook);
+      const updatedBook = await BookService.update(id, parsed.data);
       return res.json({ message: "Livro atualizado com sucesso", updatedBook });
     } catch (error) {
       return res.status(400).json({
@@ -117,14 +111,12 @@ module.exports = {
         return res.status(400).json({ message: "ID inválido" });
       }
 
-    
       const book = await BookService.getById(id);
 
       if (!book) {
         return res.status(404).json({ message: "Livro não encontrado" });
       }
 
-   
       return res.json(book);
     } catch (error) {
       return res
