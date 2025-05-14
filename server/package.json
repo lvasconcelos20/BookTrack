@@ -30,7 +30,8 @@
     "javascript",
     "api",
     "backend",
-    "prisma"
+    "prisma",
+    "docker"
   ],
   "author": "Felipe Vasconcelos",
   "license": "ISC"
