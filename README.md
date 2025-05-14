@@ -33,14 +33,26 @@ npm install
 3. Configure o banco de dados:
 
 * Configure o arquivo `.env` com sua URL de conexão do banco
+  
+4.
 
-4. Execute as migrations do Prisma:
+Instale a extensão Docker no VS Code (se ainda não tiver).
+
+Certifique-se de ter o Docker Desktop rodando.
+
+Clique com o botão direito no arquivo docker-compose.yml na raiz do projeto.
+
+Selecione “Compose Up”.
+
+A API será iniciada e estará disponível.
+
+5. Execute as migrations do Prisma:
 
 ```bash
 npx prisma migrate dev --name init
 ```
 
-5. Inicie a aplicação:
+6. Inicie a aplicação:
 
 ```bash
 npm run dev 
