@@ -12,7 +12,7 @@
 * Zod (validação)
 * Morgan (logs)
 * Esbuild / Esbuild-register
-* Docker (opcional)
+* Docker 
 * Nodemon (dev)
 
 ## 🔧 Instruções para Execução
