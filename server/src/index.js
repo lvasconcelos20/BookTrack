@@ -1,17 +1,15 @@
-const express = require("express")
-
-const app = express()
-
-app.get("/user", (req, res) => {
-    return res.send("[GET] Usuários")
-})
+const express = require("express");
+const morgan = require("morgan")
+const userRouter = require("./routes/user");
+const bookRouter = require("./routes/book");
+const app = express();
 
 
-app.post("/user", (req, res) => {
-    return res.send("[POST] Usuários")
-})
 
+app.use(express.json())
+app.use(morgan("dev"))
+app.use([userRouter, bookRouter]);
 
 app.listen(8080, () => {
-    console.log("Servidor em execução")
-})
+  console.log("Servidor em execução");
+});

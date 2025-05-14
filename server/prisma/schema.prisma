@@ -14,3 +14,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String
+  books Book[]
+
+  @@unique([email])
+}
+
+model Book {
+  id              Int      @id @default(autoincrement())
+  title           String
+  author          String?
+  status          Status
+  user            User     @relation(fields: [userId], references: [id])
+  userId          Int
+  evaluation      Int?
+  date_conclusion DateTime?
+}
+
+enum Status {
+  LIDO
+  LENDO
+  QUERO_LER
+}
