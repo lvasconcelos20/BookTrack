@@ -7,6 +7,7 @@
 * Node.js
 * Express
 * Prisma ORM
+* MySQL
 * JWT (autenticação)
 * Zod (validação)
 * Morgan (logs)
